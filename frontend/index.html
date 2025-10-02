@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" class="font-loading">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Listing - Premium Jewelry</title>
+
+    <!-- Font Preloading for Performance -->
+    <!-- Avenir Fonts -->
+    <link rel="preload" href="./assets/fonts/avenir/Avenir-Light.ttf" as="font" type="font/ttf" crossorigin>
+    <link rel="preload" href="./assets/fonts/avenir/Avenir-Book.ttf" as="font" type="font/ttf" crossorigin>
+    <link rel="preload" href="./assets/fonts/avenir/Avenir-Medium.ttf" as="font" type="font/ttf" crossorigin>
+    <link rel="preload" href="./assets/fonts/avenir/Avenir-Heavy.ttf" as="font" type="font/ttf" crossorigin>
+
+    <!-- Montserrat Fonts -->
+    <link rel="preload" href="./assets/fonts/montserrat/Montserrat-Light.ttf" as="font" type="font/ttf" crossorigin>
+    <link rel="preload" href="./assets/fonts/montserrat/Montserrat-Regular.ttf" as="font" type="font/ttf" crossorigin>
+    <link rel="preload" href="./assets/fonts/montserrat/Montserrat-Medium.ttf" as="font" type="font/ttf" crossorigin>
+    <link rel="preload" href="./assets/fonts/montserrat/Montserrat-SemiBold.ttf" as="font" type="font/ttf" crossorigin>
+    <link rel="preload" href="./assets/fonts/montserrat/Montserrat-Bold.ttf" as="font" type="font/ttf" crossorigin>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Premium Jewelry Collection</h1>
+
+
+            <!-- Filters -->
+            <div class="filters">
+                <input type="number" id="minPrice" placeholder="Min Price ($)" min="0" step="0.01">
+                <input type="number" id="maxPrice" placeholder="Max Price ($)" min="0" step="0.01">
+                <input type="number" id="minPopularity" placeholder="Min Popularity (0-100)" min="0" max="100">
+                <button id="applyFilters">Apply Filters</button>
+                <button id="clearFilters">Clear Filters</button>
+            </div>
+        </header>
+
+        <main>
+            <!-- Loading State -->
+            <div class="loading" id="loading" style="display: none;">
+                <div class="spinner"></div>
+                <p>Loading products...</p>
+            </div>
+
+            <!-- Error State -->
+            <div class="error" id="error" style="display: none;">
+                <p>Error loading products. Using sample data.</p>
+            </div>
+
+            <!-- Carousel Container -->
+            <div class="carousel-container">
+                <button class="carousel-btn prev-btn" id="prevBtn" aria-label="Previous products">&lt;</button>
+
+                <div class="carousel-wrapper">
+                    <div class="carousel-track" id="carouselTrack">
+                        <!-- Products will be loaded here dynamically -->
+                    </div>
+                </div>
+
+                <button class="carousel-btn next-btn" id="nextBtn" aria-label="Next products">&gt;</button>
+            </div>
+
+            <!-- Carousel Indicators -->
+            <div class="carousel-indicators" id="indicators">
+                <!-- Indicators will be generated dynamically -->
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 Premium Jewelry Collection. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Font loading optimization
+        document.fonts.ready.then(() => {
+            document.documentElement.classList.remove('font-loading');
+            document.documentElement.classList.add('font-loaded');
+            console.log('🎨 Custom fonts loaded successfully');
+        });
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+services:
+  - type: web
+    name: product-listing-backend
+    env: python
+    buildCommand: pip install -r backend/requirements.txt
+    startCommand: cd backend && python main.py
+    envVars:
+      - key: PORT
+        value: 8000
+      - key: HOST
+        value: 0.0.0.0
+      - key: DEBUG
+        value: False
+      - key: METAL_PRICE_API_KEY
+        sync: false
+      - key: GOLDAPI_KEY
+        sync: false
+      - key: METALS_API_KEY
+        sync: false
+
+  - type: static
+    name: product-listing-frontend
+    buildCommand: echo "No build needed"
+    staticPublishPath: frontend
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
