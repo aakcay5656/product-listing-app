@@ -1,6 +1,6 @@
 # Product Listing Application
 
-A modern product listing application with FastAPI backend and responsive frontend featuring engagement rings with dynamic pricing.
+A modern product listing application with FastAPI backend and responsive frontend featuring engagement rings with dynamic pricing. Test link: https://product-listing-app-n65b.onrender.com/static/index.html
 
 ## Features
 
@@ -39,7 +39,6 @@ A modern product listing application with FastAPI backend and responsive fronten
 1. **Clone the repository**
 ```bash
 git clone <repository-url>
-cd product-listing-app/backend
 ```
 
 2. **Install dependencies**
@@ -108,7 +107,6 @@ ALLOWED_ORIGINS=http://localhost:3000,http://127.0.0.1:3000
 
 ```
 product-listing-app/
-├── backend/                 # FastAPI application
 │   ├── main.py             # Main application file
 │   ├── config.py           # Configuration settings
 │   ├── models/             # Pydantic models
@@ -196,7 +194,7 @@ This project is licensed under the MIT License.
 
 # Ürün Listeleme Uygulaması
 
-Dinamik fiyatlandırma özellikli nişan yüzükleri sunan FastAPI backend ve responsive frontend ile modern bir ürün listeleme uygulaması.
+Dinamik fiyatlandırma özellikli nişan yüzükleri sunan FastAPI backend ve responsive frontend ile modern bir ürün listeleme uygulaması. Test link: https://product-listing-app-n65b.onrender.com/static/index.html
 
 ## Özellikler
 
@@ -235,7 +233,6 @@ Dinamik fiyatlandırma özellikli nişan yüzükleri sunan FastAPI backend ve re
 1. **Repository'yi klonlayın**
 ```bash
 git clone <repository-url>
-cd product-listing-app/backend
 ```
 
 2. **Bağımlılıkları yükleyin**
