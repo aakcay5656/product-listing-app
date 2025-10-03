@@ -9,6 +9,8 @@ from services.gold_price import GoldPriceService
 from config import settings
 import logging
 import os
+from fastapi.responses import RedirectResponse
+
 
 # Logging configuration
 logging.basicConfig(level=logging.INFO if settings.debug else logging.WARNING)
@@ -24,15 +26,15 @@ app = FastAPI(
 # CORS configuration - MUTLAKA İLK SIRADA
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Production'da settings.allowed_origins_list kullan
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
 # Static files için frontend klasörünü serve et
-if os.path.exists("../frontend"):
-    app.mount("/static", StaticFiles(directory="../frontend"), name="static")
+if os.path.exists("frontend"):
+    app.mount("/static", StaticFiles(directory="frontend"), name="static")
 
 # Initialize services
 gold_service = GoldPriceService()
@@ -78,24 +80,7 @@ async def startup_event():
 async def root():
     """API ana sayfası"""
     logger.info("Root endpoint called")
-    return {
-        "title": settings.api_title,
-        "version": settings.api_version,
-        "status": "running",
-        "cors": "enabled",
-        "data_format": {
-            "popularity_score": "0-1 range (0.85 = 85%)",
-            "weight": "grams (decimal)",
-            "images": "object with yellow, rose, white keys"
-        },
-        "endpoints": {
-            "frontend": "http://localhost:8000/static/index.html",
-            "docs": "http://localhost:8000/docs",
-            "products": "http://localhost:8000/api/products",
-            "gold_price": "http://localhost:8000/api/gold-price"
-        }
-    }
-
+    return RedirectResponse(url="/static/index.html")
 
 @app.get("/health")
 async def health():
@@ -218,7 +203,6 @@ async def get_gold_price():
 
 
 port = int(os.getenv("PORT", 8000))
-host = os.getenv("HOST", "0.0.0.0")
 
 if __name__ == "__main__":
     import uvicorn
@@ -226,7 +210,7 @@ if __name__ == "__main__":
     logger.info("Starting server...")
     uvicorn.run(
         app,
-        host=host,
+        host="0.0.0.0",
         port=port,
         reload=False
     )
