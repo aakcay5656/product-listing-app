@@ -2,9 +2,7 @@ class ProductCarousel {
     constructor() {
     // API Configuration
     const isDevelopment = window.location.hostname === 'localhost';
-    this.apiBaseUrl = isDevelopment
-        ? 'http://localhost:8000/api'
-        : 'https://your-backend-name.onrender.com/api';
+    this.apiBaseUrl = '/api';
 
         // Carousel state
         this.currentSlide = 0;

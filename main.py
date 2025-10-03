@@ -32,14 +32,11 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Static files için frontend klasörünü serve et
 if os.path.exists("frontend"):
     app.mount("/static", StaticFiles(directory="frontend"), name="static")
 
-# Initialize services
 gold_service = GoldPriceService()
 
-# Load product data
 try:
     with open("data/products.json", "r", encoding="utf-8") as f:
         products_data = json.load(f)
