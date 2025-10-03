@@ -1,19 +1,10 @@
 class ProductCarousel {
     constructor() {
     // API Configuration
-        const currentHostname = window.location.hostname;
-        const currentPort = window.location.port;
-
-        if (currentPort === '3000' || currentPort === '5500' || currentPort === '8080') {
-            // Frontend ayrı server'da çalışıyor
-            this.apiBaseUrl = 'http://localhost:8000/api';
-        } else {
-            // Aynı server'da çalışıyor
-            this.apiBaseUrl = '/api';
-        }
-
-        console.log(`🔗 API Base URL: ${this.apiBaseUrl}`);
-        console.log(`🌐 Current URL: ${window.location.href}`);
+    const isDevelopment = window.location.hostname === 'localhost';
+    this.apiBaseUrl = isDevelopment
+        ? 'http://localhost:8000/api'
+        : 'https://your-backend-name.onrender.com/api';
 
         // Carousel state
         this.currentSlide = 0;
